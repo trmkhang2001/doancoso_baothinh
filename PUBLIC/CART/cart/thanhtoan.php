@@ -11,10 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ghichu = $_POST["ghichu"];
     $phuongthuc = $_POST["phuongthuc"];
 
-    $idKH = 0;
-
     // lấy id khách hàng
-    $idKH = isset($_SESSION['idKH']) ? $_SESSION['idKH'] : 0;
+    $idKH = isset($_SESSION['idKH']) ? $_SESSION['idKH'] : 1;
 
     // đưa dữ liệu vào session file sau sử dụng lại.
     $_SESSION['ten'] = $ten;
@@ -111,6 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
             // Đã lưu dữ liệu thành công, chuyển hướng về trang cần thiết
+            unset($_SESSION['cart']);
             $url = 'http://localhost:8080/PUBLIC/index.php?pid=8';
             // Chuyển hướng
             header('Location: ' . $url);

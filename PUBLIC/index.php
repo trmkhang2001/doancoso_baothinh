@@ -70,10 +70,22 @@ $resultSql = $conn->query($sql);
     } else {
         include("view/trangchu.php");
         include("view/danhmuc.php");
-        include("view/allproducts.php");
-        include("view/women.php");
-        include("view/kids.php");
-        include("view/men.php");
+        if (isset($_GET["idsp"])) {
+            $idsp = $_GET["idsp"];
+            switch ($idsp) {
+                case 11:
+                    include("view/women.php");
+                    break;
+                case 12:
+                    include("view/kids.php");
+                    break;
+                case 13:
+                    include("view/men.php");
+                    break;
+            }
+        } else {
+            include("view/allproducts.php");
+        }
     }
     include("view/footer.php");
     ?>
